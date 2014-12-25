@@ -1,5 +1,5 @@
 setInterval('checkClock()',1000);
-setInterval('drawClockHour()',60000);
+setInterval('drawHourCircle()',60000);
 
 function onload(){
   checkClock();
@@ -7,7 +7,7 @@ function onload(){
 }
 
 function checkClock() {
-   var now = new Date();
+  var now = new Date();
   drawDigitalClock(now);
 
   if(now.getHours()==0 && now.getMinutes()==0 && now.getSeconds()==0){
