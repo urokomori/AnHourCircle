@@ -1,36 +1,18 @@
-setInterval('checkClock()',1000);
+setInterval('drawDigitalClock()',1000);
 setInterval('drawHourCircle()',60000);
 
 function onload(){
-  checkClock();
+  drawDigitalClock();
   drawHourCircle();
 }
 
-function checkClock() {
+function drawDigitalClock(){
   var now = new Date();
-  drawDigitalClock(now);
+  var nowTimeText = ("0"+now.getHours()).slice(-2)
+                      + ":" + ("0"+now.getMinutes()).slice(-2)
+                      + ":" + ("0"+now.getSeconds()).slice(-2);
 
-  if(now.getHours()==0 && now.getMinutes()==0 && now.getSeconds()==0){
-    clearHourCircle();
-  }
-}
-
-function drawDigitalClock(now){
-   var nowTimeText = ("0"+now.getHours()).slice(-2)
-                       + ":" + ("0"+now.getMinutes()).slice(-2)
-                       + ":" + ("0"+now.getSeconds()).slice(-2);
-
-   document.getElementById("clock").innerHTML = nowTimeText;
-}
-
-function clearHourCircle() {
-  var canvas = document.getElementById('canvas');
-
-  if (canvas.getContext){
-    var context = canvas.getContext('2d');
-  }
-
-  canvas.clearRect(0, 0, 600, 600);
+  document.getElementById("clock").innerHTML = nowTimeText;
 }
 
 function drawHourCircle(){
@@ -39,6 +21,8 @@ function drawHourCircle(){
   if (canvas.getContext){
     var context = canvas.getContext('2d');
   }
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
 
   var centerPosition = {
     x:320,
@@ -61,7 +45,7 @@ function drawClockEdge(center, radius, color, context){
 }
 
 function drawClockNumber(center, radius, color, context){
-  context.font = "36px 'Wire One'";
+  context.font = "32px 'Wire One'";
   context.strokeText("0", center.x-10, center.y-radius-12);
   context.strokeText("3", center.x+radius/2+50, center.y-radius/2-50);
   context.strokeText("6", center.x+radius+18, center.y+12);
