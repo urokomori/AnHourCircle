@@ -53,7 +53,7 @@ function drawClockNumber(center, radius, color, context){
   context.strokeText("12", center.x-18, center.y+radius+36);
   context.strokeText("15", center.x-radius/2-80, center.y+radius/2+75);
   context.strokeText("18", center.x-radius-50, center.y+12);
-  context.strokeText("20", center.x-radius/2-90, center.y-radius/2-50);
+  context.strokeText("21", center.x-radius/2-90, center.y-radius/2-50);
 }
 
 function drawClockFilling(center, radius, color, context){
